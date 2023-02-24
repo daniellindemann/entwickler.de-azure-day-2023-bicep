@@ -70,3 +70,4 @@ resource keyVaultSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
 }
 
 output siteUrl string = 'https://${appService.properties.defaultHostName}'
+output keyVaultName string = keyVault.name

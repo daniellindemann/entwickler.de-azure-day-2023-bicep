@@ -2,11 +2,13 @@
 
 ## What will be deployed
 
-This sample shows how to deploy an azure app service and an azure key vault.
+This sample shows how to deploy an azure app service and an azure key vault using bicep.
 
 The app service will be deployed with an app service plan with the `Basic` tier. It uses `Linux` as operating system.
 
 Along the key vault a secret gets created that will be referenced as application setting in the app service.
+
+The purpose of this demo is to show how bicep works.
 
 ## Prerequisites
 
