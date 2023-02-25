@@ -38,7 +38,7 @@ resource nsgRuleHttps 'Microsoft.Network/networkSecurityGroups/securityRules@202
     destinationAddressPrefix: '*'
     direction: 'Inbound'
     access: 'Allow'
-    priority: 611
+    priority: 610
   }
 }
 
