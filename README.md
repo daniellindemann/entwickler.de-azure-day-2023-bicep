@@ -1,16 +1,8 @@
-# entwickler.de-azure-day-2023-bicep
-Bicep samples of the talk about Infrastructure as code at the entwickler.de Azure Day 2023
+# entwickler.de Azure Day 2023 - Infrastructure-as-code with Bicep
 
+This repo contains [Bicep](https://github.com/azure/bicep) examples of my talk about Infrastructure-as-code at *entwickler.de Azure Day* 2023.
 
-
-Anmerken:
-TODO:
-
-- Dependencies werden automatisch aufgelöst
-- loops und existing
-- azure cli und azure posh integrated
-  - what-if
-    - pruefen mit `az deployment group what-if`
-    - vor deployment mit `az deployment group create --what-if`
-- modules
-  - in container registry
+- [Demo 01 - Starting with Bicep](demo01-starting-with-bicep/)
+- [Demo 02 - Existing, Loops and Azure CLI](demo02-existing-loops-and-azcli/)
+- [Demo 03 - Modules](demo03-modules/)
+- [Demo 04 - Bicep Repository](demo04-bicep-repository/)

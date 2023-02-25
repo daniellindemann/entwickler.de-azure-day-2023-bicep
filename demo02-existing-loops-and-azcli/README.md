@@ -10,7 +10,6 @@ Also the existing key vault gets retrieved to add the connection strings of the 
 
 The purpose of this demo is to show how bicep works.
 
-
 ## Prerequisites
 
 - Install Extension: [Bicep](ttps://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) / [ms-azuretools.vscode-bicep](ttps://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)
