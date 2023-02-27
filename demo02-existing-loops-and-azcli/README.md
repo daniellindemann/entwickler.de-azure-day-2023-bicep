@@ -2,7 +2,7 @@
 
 ## What will be deployed
 
-This example deploys to 2 additional resources of type storage account to the infrastructure. On storage account is used for internal app resources, the other is used for external resources. They are named that way.
+This example deploys to 2 additional resources of type storage account to the infrastructure. One storage account is used for internal app resources, the other is used for external resources. They are named that way.
 
 The storage accounts are of kind `StorageV2`, which allows a general purpose usage of storage accounts. The redundency configuration will be set to `LRS` (local redundant storage)
 
@@ -17,6 +17,8 @@ The purpose of this demo is to show how bicep works.
 - Install [Azure CLI](https://learn.microsoft.com/de-de/cli/azure/install-azure-cli)
 
 ## Step 1 - Create an array with storage account info
+
+- create a file called `storageAccounts.bicep`
 
 - Create an array variable with `internal` and `external` as values
 
@@ -52,24 +54,24 @@ The purpose of this demo is to show how bicep works.
 
 ## Step 3 - Retrieve existing key vault
 
-- Retrieve existing keyvault create in *demo01*
-  - Create a parameter for the keyvaultName
-    - Name `keyvaultName`
+- Retrieve existing key vault create in *demo01*
+  - Create a parameter for the key vault name
+    - Name `keyVaultName`
     - Type `string`
-- Use `existing` keyword to retrieve the keyvault
+- Use `existing` keyword to retrieve the key vault
   - Create `resource`
   - Name it `keyVault`
   - Set type to `'Microsoft.KeyVault/vaults@...'`
   - append `existing` to the declaration
-  - add the parameter `keyvaultName` to the `name` property
+  - add the parameter `keyVaultName` to the `name` property
 
     ```bicep
     resource keyVault 'Microsoft.KeyVault/vaults@2022-07-01' existing = {
-      name: keyvaultName
+      name: keyVaultName
     }
     ```
 
-## Step 4 - Create keyvault secrets
+## Step 4 - Create key vault secrets
 
 - Add a loop to create secrets for all created storage accounts
   - Create secret resource
@@ -117,12 +119,6 @@ The purpose of this demo is to show how bicep works.
   RG=theresourcegroup
   ```
 
-- Get keyvault name from deployment
-
-  ```bash
-  KEYVAULT_NAME=$(az deployment group list --resource-group rg-test-azday-1234 --query "[0].properties.outputs.keyVaultName.value" -o tsv)
-  ```
-
 #### Check Deployment
 
 - `az deployment group validate --resource-group $RG --template-file storageAccount.bicep`
@@ -139,14 +135,22 @@ The purpose of this demo is to show how bicep works.
 
 ## Parameters
 
+### Prerequisites - Get key vault variable
+
+- Get key vault name from previous deployment
+
+  ```bash
+  KEYVAULT_NAME=$(az deployment group list --resource-group $RG --query "[0].properties.outputs.keyVaultName.value" -o tsv)
+  ```
+
 ### Single parameters
 
 - With plain text variable
-  - `az deployment group create --resource-group $RG --template-file storageAccount.bicep --parameters keyvaultName=kv-demo01-azday-fsiqvs`
+  - `az deployment group create --resource-group $RG --template-file storageAccount.bicep --parameters keyVaultName=kv-demo01-azday-fsiqvs`
 
 - With variable
   - Ensure you have the variable `KEYVAULT_NAME` set
-  - `az deployment group create --resource-group $RG --template-file storageAccount.bicep --parameters keyvaultName=$KEYVAULT_NAME`
+  - `az deployment group create --resource-group $RG --template-file storageAccount.bicep --parameters keyVaultName=$KEYVAULT_NAME`
 
 ### Parameter files
 

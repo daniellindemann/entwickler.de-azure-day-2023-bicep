@@ -99,7 +99,7 @@ The purpose of this demo is to show how bicep works.
           }
         }
       ]
-        ```
+      ```
 
 - Create Key Vault Secret
   - Type `res` and select `res-keyvault-secret`
@@ -116,7 +116,7 @@ The purpose of this demo is to show how bicep works.
     appSettings: [
       {
         name: 'appSecret'
-        value: '@Microsoft.KeyVault(${keyVaultSecret.properties.secretUri})'
+        value: '@Microsoft.KeyVault(SecretUri=${keyVaultSecret.properties.secretUri})'
       }
     ]
     ```
@@ -168,10 +168,24 @@ The purpose of this demo is to show how bicep works.
   - Type `output` and tab through
   - Set identifier to `siteUrl`
   - Set type to `string`
-  - Set default value to `'https://${appService.properties.defaultHostName}'`
+  - Set value to `'https://${appService.properties.defaultHostName}'`
 
     ```bicep
     output siteUrl string = 'https://${appService.properties.defaultHostName}'
+    ```
+
+- Add an output for the keyvault name
+
+  - Type `output` and tab through
+
+  - Set identifier to `keyVaultName`
+
+  - Set type to `string`
+
+  - Set value to `keyVault.name`
+
+    ```bicep
+    output keyVaultName string = keyVault.name
     ```
 
 ## Deployment

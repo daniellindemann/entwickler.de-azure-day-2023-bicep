@@ -14,16 +14,24 @@ The sample module is a preconfigured network security group module in file [repo
 
 ## Step 1 - Create Container Registry
 
-- Create a container registry
+- Create a container registry or use an existing one
+  - Create
 
-  ```bash
-  RG=rg-azday-deps
-  LOCATION=northeurope
-  ACR_NAME=acrazdaysdep$RANDOM
+    ```bash
+    RG=rg-azday-deps
+    LOCATION=northeurope
+    ACR_NAME=acrazdaysdep$RANDOM
 
-  az group create --name $RG --location $LOCATION
-  az acr create --name $ACR_NAME --resource-group $RG --sku Basic
-  ```
+    az group create --name $RG --location $LOCATION
+    az acr create --name $ACR_NAME --resource-group $RG --sku Basic
+    ```
+
+  - Use existing one
+
+    ```bash
+    RG=<resource group containing acr>
+    ACR_NAME=<name of the acr>
+    ```
 
 - Store login server in variable
 
@@ -33,7 +41,7 @@ The sample module is a preconfigured network security group module in file [repo
 
 ## Step 2 - Push Bicep module to
 
-- Push nsg-web.bicep module to ACR
+- Push `repository/nsg-web.bicep` module to ACR
 
   ```bash
   az bicep publish --file repository/nsg-web.bicep --target br:$ACR_LOGIN_SEVER/bicep/modules/nsg-web:1.0.0

@@ -2,7 +2,7 @@
 param location string = resourceGroup().location
 
 @description('Name of the key vault')
-param keyvaultName string
+param keyVaultName string
 
 var suffix = substring(uniqueString(resourceGroup().id), 0, 6)
 
@@ -25,7 +25,7 @@ resource storageAccounts 'Microsoft.Storage/storageAccounts@2022-09-01' = [for a
 }]
 
 resource keyVault 'Microsoft.KeyVault/vaults@2022-07-01' existing = {
-  name: keyvaultName
+  name: keyVaultName
 }
 
 resource keyVaultSecrets 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = [for i in range(0, length(accountUsages)): {

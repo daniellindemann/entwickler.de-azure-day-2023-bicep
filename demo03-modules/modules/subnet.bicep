@@ -10,7 +10,7 @@ e.g. `10.0.0.0/16`
 ''')
 param addressPrefix string
 
-@description('Name of the NSG, empty if you don\'t want to use a NSG')
+@description('Id of the NSG, empty if you don\'t want to use a NSG')
 param nsgId string = ''
 
 resource subnet 'Microsoft.Network/virtualNetworks/subnets@2022-07-01' = {
