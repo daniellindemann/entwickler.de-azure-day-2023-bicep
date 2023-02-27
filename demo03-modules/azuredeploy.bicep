@@ -1,6 +1,9 @@
 @description('Location for resource deployment')
 param location string = resourceGroup().location
 
+@description('Deploys the second VNET, if `true`')
+param enableSecondVnet bool = false
+
 // ---
 
 module firstVnet 'modules/vnet.bicep' = {
@@ -16,7 +19,7 @@ module firstVnet 'modules/vnet.bicep' = {
 
 // ---
 
-module secondVnet 'modules/vnet.bicep' = {
+module secondVnet 'modules/vnet.bicep' = if(enableSecondVnet) {
   name: 'module-secondVnet'
   params: {
     location: location

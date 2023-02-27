@@ -1,5 +1,6 @@
 param location string = resourceGroup().location
 
+// change name of acr accordingly to your acr
 module nsgWeb 'br:acrazdaysdep13834.azurecr.io/bicep/modules/nsg-web:1.0.0' = {
   name: 'module-nsgWeb'
   params: {
