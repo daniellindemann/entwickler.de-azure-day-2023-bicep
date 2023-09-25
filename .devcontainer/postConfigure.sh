@@ -3,7 +3,7 @@
 IS_ARM=$(if [[ $(uname -m) == 'aarch64' || $(uname -m) == "amd64" ]]; then echo true; else echo false; fi)
 
 echo "--- Install bicep ---"
-if [[ $(uname -m) == 'aarch64' || $(uname -m) == "amd64" ]]; then
+if [[ $IS_ARM = true ]]; then
     echo "Yep, it's an arm64 machine"
     BICEP_VERSION=$(
         curl --silent "https://api.github.com/repos/Azure/bicep/releases/latest" | \
