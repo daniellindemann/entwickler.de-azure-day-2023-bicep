@@ -7,13 +7,9 @@
     // Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/azure-cli:1": {
-			"installBicep": true,
 			"version": "latest"
 		},
-		"ghcr.io/stuartleeks/dev-container-features/azure-cli-persistence:0": {},
-		"ghcr.io/devcontainers/features/powershell:1": {
-			"version": "latest"
-		}
+		"ghcr.io/stuartleeks/dev-container-features/azure-cli-persistence:0": {}
 	},
     // Configure tool-specific properties.
 	"customizations": {
@@ -23,7 +19,9 @@
                 "ms-vscode.azure-account"
 			]
 		}
-	}
+	},
+    // Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "./.devcontainer/postConfigure.sh"
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
