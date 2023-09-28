@@ -30,24 +30,24 @@ module secondVnet 'modules/vnet.bicep' = if(enableSecondVnet) {
   }
 }
 
-module subnetOne 'modules/subnet.bicep' = {
+module subnetOne 'modules/subnet.bicep' = if(enableSecondVnet) {
   name: 'module-subnetOne'
   params: {
     addressPrefix: '192.168.11.0/28'
     name: 'one'
 
-    vnetName: secondVnet.outputs.name
-    nsgId: secondVnet.outputs.nsgId
+    vnetName: enableSecondVnet ? secondVnet.outputs.name : ''
+    nsgId: enableSecondVnet ? secondVnet.outputs.nsgId : ''
   }
 }
 
-module subnetTwo 'modules/subnet.bicep' = {
+module subnetTwo 'modules/subnet.bicep' = if(enableSecondVnet) {
   name: 'module-subnetTwo'
   params: {
     addressPrefix: '192.168.11.16/28'
     name: 'two'
 
-    vnetName: secondVnet.outputs.name
+    vnetName: enableSecondVnet ? secondVnet.outputs.name : ''
     nsgId: ''
   }
 }
