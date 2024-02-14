@@ -9,7 +9,8 @@
 		"ghcr.io/devcontainers/features/azure-cli:1": {
 			"version": "latest"
 		},
-		"ghcr.io/stuartleeks/dev-container-features/azure-cli-persistence:0": {}
+		"ghcr.io/stuartleeks/dev-container-features/azure-cli-persistence:0": {},
+		"ghcr.io/stuartleeks/dev-container-features/shell-history:0": {}
 	},
     // Configure tool-specific properties.
 	"customizations": {

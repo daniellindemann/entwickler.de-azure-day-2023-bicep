@@ -57,7 +57,7 @@ The purpose of this demo is to show how bicep works.
       serverFarmId: appServicePlan.id
       httpsOnly: true
       siteConfig: {
-          linuxFxVersion: 'DOTNETCORE|7.0'
+          linuxFxVersion: 'DOTNETCORE|8.0'
       }
     }
     ```
