@@ -1,3 +1,5 @@
+targetScope = 'resourceGroup'
+
 @description('Location for resource deployment')
 param location string = resourceGroup().location
 
