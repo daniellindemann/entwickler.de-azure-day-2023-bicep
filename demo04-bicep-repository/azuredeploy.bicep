@@ -12,7 +12,7 @@ module nsgWeb 'br:acrazdaysdep13834.azurecr.io/bicep/modules/nsg-web:1.0.0' = {
   }
 }
 
-resource virtualNetwork 'Microsoft.Network/virtualNetworks@2022-07-01' = {
+resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-09-01' = {
   name: 'vnet-azday-demo04'
   location: location
   properties: {

@@ -25,7 +25,7 @@ module webNsg 'nsg-web.bicep' = {
   }
 }
 
-resource virtualNetwork 'Microsoft.Network/virtualNetworks@2022-07-01' = {
+resource virtualNetwork 'Microsoft.Network/virtualNetworks@2023-09-01' = {
   name: 'vnet-${name}'
   location: location
   properties: {

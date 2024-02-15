@@ -4,7 +4,7 @@ var suffix = substring(uniqueString(resourceGroup().id), 0, 6)
 var keyVaultName = 'kv-demo01-azday-${suffix}'
 var keyVaultSecretName = 'mysecret'
 
-resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
+resource appServicePlan 'Microsoft.Web/serverfarms@2023-01-01' = {
   name: 'plan-demo01-azure-day-${suffix}'
   location: location
   sku: {
@@ -16,7 +16,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
   }
 }
 
-resource appService 'Microsoft.Web/sites@2022-03-01' = {
+resource appService 'Microsoft.Web/sites@2023-01-01' = {
   name: 'app-demo01-azure-day-${suffix}'
   location: location
   properties: {
@@ -37,7 +37,7 @@ resource appService 'Microsoft.Web/sites@2022-03-01' = {
   }
 }
 
-resource keyVault 'Microsoft.KeyVault/vaults@2022-07-01' = {
+resource keyVault 'Microsoft.KeyVault/vaults@2023-07-01' = {
   name: keyVaultName
   location: location
   properties: {
@@ -61,7 +61,7 @@ resource keyVault 'Microsoft.KeyVault/vaults@2022-07-01' = {
   }
 }
 
-resource keyVaultSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
+resource keyVaultSecret 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = {
   name: keyVaultSecretName
   parent: keyVault
   properties: {

@@ -13,7 +13,7 @@ param addressPrefix string
 @description('Id of the NSG, empty if you don\'t want to use a NSG')
 param nsgId string = ''
 
-resource subnet 'Microsoft.Network/virtualNetworks/subnets@2022-07-01' = {
+resource subnet 'Microsoft.Network/virtualNetworks/subnets@2023-09-01' = {
   name: '${vnetName}/snet-${name}'
   properties: {
     addressPrefix: addressPrefix

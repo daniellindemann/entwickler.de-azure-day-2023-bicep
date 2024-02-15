@@ -3,14 +3,14 @@ param name string
 param usePort80 bool = true
 param usePort443 bool = true
 
-resource nsg 'Microsoft.Network/networkSecurityGroups@2022-07-01' = {
+resource nsg 'Microsoft.Network/networkSecurityGroups@2023-09-01' = {
   name: 'nsg-${name}'
   location: location
   properties: {
   }
 }
 
-resource nsgRuleHttp 'Microsoft.Network/networkSecurityGroups/securityRules@2022-07-01' = if(usePort80) {
+resource nsgRuleHttp 'Microsoft.Network/networkSecurityGroups/securityRules@2023-09-01' = if(usePort80) {
   parent: nsg
   name: 'Allow80Inbound'
   properties: {
@@ -26,7 +26,7 @@ resource nsgRuleHttp 'Microsoft.Network/networkSecurityGroups/securityRules@2022
   }
 }
 
-resource nsgRuleHttps 'Microsoft.Network/networkSecurityGroups/securityRules@2022-07-01' = if(usePort443) {
+resource nsgRuleHttps 'Microsoft.Network/networkSecurityGroups/securityRules@2023-09-01' = if(usePort443) {
   parent: nsg
   name: 'Allow443Inbound'
   properties: {

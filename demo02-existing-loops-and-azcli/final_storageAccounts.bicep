@@ -14,7 +14,7 @@ var accountUsages = [
   'external'
 ]
 
-resource storageAccounts 'Microsoft.Storage/storageAccounts@2022-09-01' = [for accountUsages in accountUsages: {
+resource storageAccounts 'Microsoft.Storage/storageAccounts@2023-01-01' = [for accountUsages in accountUsages: {
   name: 'stazday${accountUsages}${suffix}'
   location: location
   kind: 'StorageV2'
@@ -26,11 +26,11 @@ resource storageAccounts 'Microsoft.Storage/storageAccounts@2022-09-01' = [for a
   }
 }]
 
-resource keyVault 'Microsoft.KeyVault/vaults@2022-07-01' existing = {
+resource keyVault 'Microsoft.KeyVault/vaults@2023-07-01' existing = {
   name: keyVaultName
 }
 
-resource keyVaultSecrets 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = [for i in range(0, length(accountUsages)): {
+resource keyVaultSecrets 'Microsoft.KeyVault/vaults/secrets@2023-07-01' = [for i in range(0, length(accountUsages)): {
   name: 'connection-string-${storageAccounts[i].name}'
   parent: keyVault
   properties: {
